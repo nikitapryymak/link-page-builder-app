@@ -3,8 +3,10 @@ import DragIcon from "../../../icons/DragIcon";
 import TrashIcon from "../../../icons/TrashIcon";
 import EditableText from "./EditableText";
 import { copy } from "../../../utils/appUtils";
+import { MODAL_DELETE_LINK } from "../../../components/modals/DeleteModal";
+import { DELETE } from "../Links";
 
-const LinkItem = ({ id, name, url, icon, active, updateDesign }) => {
+const LinkItem = ({ id, name, url, icon, active, setUi, updateDesign }) => {
   return (
     <div className="flex items-center justify-between p-3 pl-0 mb-3 bg-white rounded-3xl shadow-md">
       <div className="flex">
@@ -45,11 +47,23 @@ const LinkItem = ({ id, name, url, icon, active, updateDesign }) => {
               checked={active}
               onChange={() => updateDesign(id, "active", !active)}
             />
-            <label for="switch" className="hidden"></label>
+            <label htmlFor="switch" className="hidden"></label>
             <div className="peer h-6 w-11 rounded-full bg-gray-300 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-emerald-600 peer-checked:after:translate-x-full"></div>
           </label>
         </div>
-        <button title="Delete Link" className="mr-1 hover:text-red-600">
+        <button
+          title="Delete Link"
+          className="mr-1 hover:text-red-600"
+          onClick={() =>
+            setUi((prev) => ({
+              ...prev,
+              modal: {
+                type: MODAL_DELETE_LINK,
+                onConfirm: async () => updateDesign(id, null, null, DELETE),
+              },
+            }))
+          }
+        >
           <TrashIcon />
         </button>
       </div>

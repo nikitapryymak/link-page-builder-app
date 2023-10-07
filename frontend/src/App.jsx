@@ -9,10 +9,12 @@ import Preview from "./components/preview/Preview";
 import AdminContainer from "./components/AdminContainer";
 import queryClient from "./config/queryClient";
 import Links from "./views/links/Links";
+import UIPortals from "./components/UIPortals";
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
+      <UIPortals />
       <Routes>
         {/* PUBLIC ROUTES */}
         <Route path="/" element={<AppContainer />}>
