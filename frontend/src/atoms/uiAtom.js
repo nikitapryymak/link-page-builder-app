@@ -2,7 +2,7 @@ import { atom } from "jotai";
 
 // type Modal = {
 //     type: string,
-//     onConfirm: () => Promise<any>,
+//     meta: {},
 // }
 
 const uiAtom = atom({

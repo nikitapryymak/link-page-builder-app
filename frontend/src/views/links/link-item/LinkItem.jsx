@@ -5,6 +5,8 @@ import EditableText from "./EditableText";
 import { copy } from "../../../utils/appUtils";
 import { MODAL_DELETE_LINK } from "../../../components/modals/DeleteModal";
 import { DELETE } from "../Links";
+import PhotoIcon from "../../../icons/PhotoIcon";
+import { MODAL_SELECT_ICON } from "../../../components/modals/SelectIconModal";
 
 const LinkItem = ({ id, name, url, icon, active, setUi, updateDesign }) => {
   return (
@@ -27,6 +29,21 @@ const LinkItem = ({ id, name, url, icon, active, setUi, updateDesign }) => {
             value={url}
             updateDesign={updateDesign}
           />
+          <button
+            title="Add Icon"
+            className="text-gray-700 hover:text-black"
+            onClick={() =>
+              setUi((prev) => ({
+                ...prev,
+                modal: {
+                  type: MODAL_SELECT_ICON,
+                  meta: { linkId: id, icon, updateDesign },
+                },
+              }))
+            }
+          >
+            <PhotoIcon />
+          </button>
         </div>
       </div>
 
@@ -59,7 +76,9 @@ const LinkItem = ({ id, name, url, icon, active, setUi, updateDesign }) => {
               ...prev,
               modal: {
                 type: MODAL_DELETE_LINK,
-                onConfirm: async () => updateDesign(id, null, null, DELETE),
+                meta: {
+                  onConfirm: async () => updateDesign(id, null, null, DELETE),
+                },
               },
             }))
           }

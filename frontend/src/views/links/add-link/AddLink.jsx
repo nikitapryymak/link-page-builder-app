@@ -3,7 +3,7 @@ import PlusIcon from "../../../icons/PlusIcon";
 import AddLinkForm from "./AddLinkForm";
 
 export const AddLink = ({ designId }) => {
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   return (
     <div>
       <button

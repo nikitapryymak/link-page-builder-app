@@ -2,14 +2,15 @@ import { useSetAtom } from "jotai";
 import DeleteIcon from "../../icons/DeleteIcon";
 import uiAtom from "../../atoms/uiAtom";
 
-export const MODAL_DELETE_LINK = "DEL_LINK";
+export const MODAL_DELETE_LINK = "M_DL";
 
-const DeleteModal = ({ onConfirm }) => {
+const DeleteModal = ({ meta }) => {
   const setUi = useSetAtom(uiAtom);
+  const { onConfirm } = meta;
   return (
     <div
       className="relative z-10"
-      aria-labelledby="modal-title"
+      aria-labelledby="delete-link-title"
       role="dialog"
       aria-modal="true"
     >
@@ -23,7 +24,7 @@ const DeleteModal = ({ onConfirm }) => {
                 <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                   <h3
                     className="text-base font-semibold leading-6 text-gray-900"
-                    id="modal-title"
+                    id="delete-link-title"
                   >
                     Delete Link
                   </h3>
