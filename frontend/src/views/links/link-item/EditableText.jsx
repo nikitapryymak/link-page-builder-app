@@ -1,15 +1,15 @@
 import { useRef, useState } from "react";
 import PencilIcon from "../../../icons/PencilIcon";
 
-const EditableText = ({ linkId, prop, value, classes = "", updateDesign }) => {
+const EditableText = ({ linkId, prop, value, classes = "", updateLink }) => {
   const ref = useRef(value);
   const [editing, setEditing] = useState(false);
 
-  const onBlur = (e) => {
+  const onSave = (e) => {
     const newVal = e.target.value.trim();
     ref.current = newVal ? newVal : ref.current;
     setEditing(false);
-    updateDesign(linkId, prop, ref.current);
+    updateLink(linkId, prop, ref.current);
   };
 
   return (
@@ -23,7 +23,8 @@ const EditableText = ({ linkId, prop, value, classes = "", updateDesign }) => {
           type="text"
           className="w-[16rem] border-b border-gray-300 focus:outline-none"
           defaultValue={ref.current}
-          onBlur={onBlur}
+          onBlur={onSave}
+          onKeyUp={(e) => e.key === "Enter" && onSave(e)}
         />
       ) : (
         <p className="flex items-center border-b border-transparent">

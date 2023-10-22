@@ -3,12 +3,12 @@ import DragIcon from "../../../icons/DragIcon";
 import TrashIcon from "../../../icons/TrashIcon";
 import EditableText from "./EditableText";
 import { copy } from "../../../utils/appUtils";
-import { MODAL_DELETE_LINK } from "../../../components/modals/DeleteModal";
+import { MODAL_DELETE } from "../../../components/modals/DeleteModal";
 import { DELETE } from "../Links";
 import PhotoIcon from "../../../icons/PhotoIcon";
 import { MODAL_SELECT_ICON } from "../../../components/modals/SelectIconModal";
 
-const LinkItem = ({ id, name, url, icon, active, setUi, updateDesign }) => {
+const LinkItem = ({ id, name, url, icon, active, setUi, updateLink }) => {
   return (
     <div className="flex items-center justify-between p-3 pl-0 mb-3 bg-white rounded-3xl shadow-md">
       <div className="flex">
@@ -20,14 +20,14 @@ const LinkItem = ({ id, name, url, icon, active, setUi, updateDesign }) => {
             prop="name"
             linkId={id}
             value={name}
-            updateDesign={updateDesign}
+            updateLink={updateLink}
             classes="font-semibold"
           />
           <EditableText
             prop="url"
             linkId={id}
             value={url}
-            updateDesign={updateDesign}
+            updateLink={updateLink}
           />
           <button
             title="Add Icon"
@@ -37,7 +37,7 @@ const LinkItem = ({ id, name, url, icon, active, setUi, updateDesign }) => {
                 ...prev,
                 modal: {
                   type: MODAL_SELECT_ICON,
-                  meta: { linkId: id, icon, updateDesign },
+                  meta: { linkId: id, icon, updateLink },
                 },
               }))
             }
@@ -62,7 +62,7 @@ const LinkItem = ({ id, name, url, icon, active, setUi, updateDesign }) => {
               type="checkbox"
               className="peer sr-only"
               checked={active}
-              onChange={() => updateDesign(id, "active", !active)}
+              onChange={() => updateLink(id, "active", !active)}
             />
             <label htmlFor="switch" className="hidden"></label>
             <div className="peer h-6 w-11 rounded-full bg-gray-300 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-emerald-600 peer-checked:after:translate-x-full"></div>
@@ -75,9 +75,10 @@ const LinkItem = ({ id, name, url, icon, active, setUi, updateDesign }) => {
             setUi((prev) => ({
               ...prev,
               modal: {
-                type: MODAL_DELETE_LINK,
+                type: MODAL_DELETE,
                 meta: {
-                  onConfirm: async () => updateDesign(id, null, null, DELETE),
+                  title: "Delete Link",
+                  onConfirm: async () => updateLink(id, null, null, DELETE),
                 },
               },
             }))

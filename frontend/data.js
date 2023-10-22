@@ -37,19 +37,19 @@ const DESIGN = {
   ],
   socials: [
     {
-      name: "YT",
+      type: "YT",
       url: "https://facebook.com",
     },
     {
-      name: "EMAIL",
+      type: "SC",
       url: "https://twitter.com",
     },
     {
-      name: "TWIT",
+      type: "TWTR",
       url: "https://twitter.com",
     },
     {
-      name: "PAY",
+      type: "PAY",
       url: "https://www.paypal.com/paypalme/nikitapryymak",
     },
   ],

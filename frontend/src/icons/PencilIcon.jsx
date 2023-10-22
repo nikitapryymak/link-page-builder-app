@@ -1,4 +1,4 @@
-const PencilIcon = ({ className = "w-3 h-3" }) => (
+const PencilIcon = ({ className = "w-4 h-4" }) => (
   <svg
     stroke="currentColor"
     fill="currentColor"

@@ -32,7 +32,7 @@ const AddLinkForm = ({ designId, showForm, closeForm }) => {
 
   return (
     <div
-      className={`relative p-5 mb-6 bg-white rounded-3xl transition-all duration-300 shadow-md ${
+      className={`relative p-5 pt-7 mb-6 bg-white rounded-3xl transition-all duration-300 shadow-md ${
         showForm
           ? "scale-1 translate-y-0 max-h-96"
           : "scale-0 -translate-y-2/4 max-h-0"

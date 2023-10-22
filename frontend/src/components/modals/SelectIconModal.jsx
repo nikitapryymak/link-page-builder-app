@@ -8,13 +8,13 @@ import AppIconsMap, { AppIcons } from "../../icons/AppIcons";
 export const MODAL_SELECT_ICON = "M_SI";
 
 const SelectIconModal = ({ meta }) => {
-  const { linkId, icon = "", updateDesign } = meta;
+  const { linkId, icon = "", updateLink } = meta;
   const setUi = useSetAtom(uiAtom);
   const [search, setSearch] = useState("");
 
   const close = useCallback((selectedIcon) => {
     if (selectedIcon !== icon) {
-      updateDesign(linkId, "icon", selectedIcon);
+      updateLink(linkId, "icon", selectedIcon);
     }
     setUi((prev) => ({ ...prev, modal: null }));
   }, []);
@@ -68,6 +68,7 @@ const SelectIconModal = ({ meta }) => {
               <SearchInput
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
+                placeholder="Search Icons"
               />
             </div>
             <div

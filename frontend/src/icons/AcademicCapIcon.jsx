@@ -1,4 +1,4 @@
-const PuzzleIcon = ({ className = "w-4 h-4" }) => (
+const AcademicCapIcon = ({ className = "w-4 h-4" }) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -15,4 +15,4 @@ const PuzzleIcon = ({ className = "w-4 h-4" }) => (
   </svg>
 );
 
-export default PuzzleIcon;
+export default AcademicCapIcon;

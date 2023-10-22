@@ -11,7 +11,7 @@ export const InfoAlert = ({ url }) => {
     });
 
   return (
-    <div className="flex justify-between items-center m-4 mb-12 p-3 text-sm rounded-3xl bg-blue-100">
+    <div className="flex justify-between items-center m-2 mb-12 p-3 text-sm rounded-3xl bg-blue-100">
       <span className="font-semibold flex items-center">
         <InfoIcon />
         &nbsp;&nbsp;Your Linktree is live:&nbsp;

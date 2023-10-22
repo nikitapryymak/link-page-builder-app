@@ -10,6 +10,7 @@ import AdminContainer from "./components/AdminContainer";
 import queryClient from "./config/queryClient";
 import Links from "./views/links/Links";
 import UIPortals from "./components/UIPortals";
+import { RedirectToAdmin } from "./components/redirects/redirects";
 
 function App() {
   return (
@@ -18,8 +19,9 @@ function App() {
       <Routes>
         {/* PUBLIC ROUTES */}
         <Route path="/" element={<AppContainer />}>
-          <Route path=":username" element={<>User Linktree</>} />
+          <Route index element={<RedirectToAdmin />} />
           <Route path="login" element={<>Login Page</>} />
+          <Route path=":username" element={<>User Linktree</>} />
         </Route>
         {/* ADMIN ROUTES */}
         <Route path="/admin" element={<AdminContainer />}>

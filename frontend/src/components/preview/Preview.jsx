@@ -11,10 +11,9 @@ const Preview = () => {
   const { title, desc, imgUrl, links = [], socials = [] } = design || {};
   return (
     <div className="flex-1 flex w-full">
-      <div className="flex-1">
+      <div className="flex-1 p-3">
         <Outlet />
       </div>
-
       {/* Preview Container */}
       <div
         className={`flex-1 flex flex-col justify-start items-center text-white pt-14 max-w-[570px] border-l border-gray-300 ${
@@ -48,8 +47,8 @@ const Preview = () => {
               ))}
             </div>
             <div className="center gap-6">
-              {socials.map(({ name, url }, i) => (
-                <SocialLinkIcon name={name} url={url} key={i} />
+              {socials.map(({ type, url }) => (
+                <SocialLinkIcon type={type} url={url} key={type} />
               ))}
             </div>
           </>

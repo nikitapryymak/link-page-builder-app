@@ -1,9 +1,11 @@
-import { SOCIAL_LINK_ICONS } from "../constants/socialLinks";
+import { SocialIconsMap } from "../constants/socialLinks";
 
-const SocialLinkIcon = ({ name, ...props }) => {
-  const Comp = SOCIAL_LINK_ICONS[name] || null;
+const SocialLinkIcon = ({ type, url, ...props }) => {
+  const Comp = SocialIconsMap[type]?.Comp || null;
   return Comp ? (
-    <Comp className="w-6 h-6 cursor-pointer hover:scale-110" {...props} />
+    <a href={url} target="_blank">
+      <Comp className="w-6 h-6 cursor-pointer hover:scale-110" {...props} />
+    </a>
   ) : null;
 };
 export default SocialLinkIcon;
